@@ -63,7 +63,7 @@ function Home() {
           {header}
         </h1>
       )}
-      <div className=" w-screen px-4 flex flex-wrap justify-start">
+      <div className=" w-screen px-4 flex flex-wrap justify-center">
         {recipes.map((recipe) => (
           <Card
             key={recipe.recipe.label}
