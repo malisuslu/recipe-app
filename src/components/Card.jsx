@@ -3,23 +3,25 @@ function Card({ title, description, image, link }) {
     <div className=" w-[250px] h-[400px] m-4 bg-white rounded-lg border border-gray-200 shadow-md">
       <a href="#!">
         <img
-          className="rounded-t-lg object-cover object-center mx-auto"
+          className="rounded-t-lg object-cover object-center mx-auto min-h-[250px]"
           src={image}
           alt=""
         />
       </a>
       <div className="flex flex-col h-1/3 p-2 justify-between">
-        <a href="#!">
+        <a href="#!" className="h-3/6 overflow-hidden">
           <h5 className="mb-1 text-clip font-bold tracking-tight text-gray-900">
             {title}
           </h5>
         </a>
-        <p className="mb-2 font-normal text-gray-700">{description}</p>
+        <p className="h-2/6 mb-2 font-normal text-gray-700 overflow-hidden">
+          {description}
+        </p>
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-28 items-center py-2 px-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+          className="h-2/6 inline-flex w-28 items-center py-2 px-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
         >
           Read more
           <svg
