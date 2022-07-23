@@ -7,6 +7,7 @@ const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(auth && auth.currentUser);
   const [isLoggedIn, setIsLoggedIn] = useState(auth ? auth.currentUser : null);
+  const [displayName, setDisplayName] = useState();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -25,6 +26,8 @@ export const UserProvider = ({ children }) => {
       value={{
         user,
         isLoggedIn,
+        displayName,
+        setDisplayName,
       }}
     >
       {children}

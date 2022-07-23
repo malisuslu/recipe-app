@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Reset from "./pages/Reset";
 // import { ThemeProvider } from "styled-components";
 import { useUser } from "./context/AuthContext";
 import { signOut } from "firebase/auth";
@@ -16,7 +17,7 @@ import { auth } from "./firebase-config";
 import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn, displayName } = useUser();
 
   const logout = async () => {
     return await signOut(auth)
@@ -29,8 +30,6 @@ function App() {
         toast.error(error.message);
       });
   };
-
-  const displayName = isLoggedIn ? auth.currentUser.displayName : null;
 
   if (isLoggedIn === null) {
     return (
@@ -96,6 +95,10 @@ function App() {
         <Route
           path="/register"
           element={isLoggedIn ? <Navigate to="/" /> : <Register />}
+        />
+        <Route
+          path="/reset"
+          element={isLoggedIn ? <Navigate to="/" /> : <Reset />}
         />
         <Route
           path="/about"

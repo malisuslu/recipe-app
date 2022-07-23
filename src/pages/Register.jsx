@@ -4,12 +4,14 @@ import Input from "../components/Input";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase-config";
 import toast from "react-hot-toast";
+import { useUser } from "../context/AuthContext";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
+  const { setDisplayName } = useUser();
 
   const notifyD = (text) =>
     toast.error(text, {
@@ -28,6 +30,7 @@ function Register() {
     if (password !== confirmPassword) {
       return notifyD("Passwords do not match! Try again...");
     } else {
+      await setDisplayName(fullName);
       await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed in

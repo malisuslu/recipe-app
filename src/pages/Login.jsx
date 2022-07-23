@@ -291,7 +291,7 @@ function Login() {
           >
             Login
           </Button>
-          <a href="#!" className="mt-4 hover:text-lime-500">
+          <a href="./reset" className="mt-4 hover:text-lime-500">
             Forgot password?
           </a>
           <p className="text-sm font-semibold pt-1 mb-0">
