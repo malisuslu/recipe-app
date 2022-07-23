@@ -11,11 +11,13 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase-config";
 import toast from "react-hot-toast";
+import { useUser } from "../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
+  const { setDisplayName } = useUser();
 
   const notifyD = (text) =>
     toast.error(text, {
@@ -44,8 +46,9 @@ function Login() {
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential.accessToken;
         // The signed-in user info.
-        // const user = result.user;
+        const user = result.user;
         notifyS("Login successful");
+        setDisplayName(user.displayName);
         // sessionStorage.setItem("token", token);
         // sessionStorage.setItem("user", JSON.stringify(user));
         // ...
